@@ -22,25 +22,23 @@ async function fetchDataAsync(randomUrl) {
 //add random meal and append to card function
 function addMeal(mealData) {
   const meal = document.createElement("div");
-  meal.classList.add("col-sm-4");
-//  meal.classList.add("col-sm-4");
+  meal.classList.add(`${mealData.strArea}`);
   meal.innerHTML = `
-
-  <div class="card" style="width: 100%">
-        <div class="meal-header">
-            <span class="random">Recipe for the lost</span>
+<div class="col-sm-3)
+  <div class="card" style="width: 18rem">
+        <div class="${mealData.strArea}">
             <h5 class="card-title">${mealData.strMeal}</h5>
-            <img class="card-img-1 img-fluid"
+            <img class="card-img-1 img-thumbnail"
                 src="${mealData.strMealThumb}"
                 alt="${mealData.strMeal}"
             />
         </div>
         <div class="card-body">
             <a href = "javascript:void(0)" onclick= "fetchById(${mealData["idMeal"]})" data-id =${mealData["idMeal"]} class="btn btn-primary">View Recipe</a>
-            <h6 class="country">${mealData.strArea}</h6>
         </div>
         </div>
         </div>
+        <div>
     `;
 
 
