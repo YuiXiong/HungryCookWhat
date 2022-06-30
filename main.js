@@ -4,6 +4,7 @@ const mealsElement = document.getElementById("meals-id");
 const searchTerm = document.getElementById("search-term");
 const searchBtn = document.getElementById("search");
 
+
 fetchDataAsync(randomUrl);
 
 async function fetchDataAsync(randomUrl) {
@@ -22,7 +23,7 @@ async function fetchDataAsync(randomUrl) {
 function addMeal(mealData) {
   const meal = document.createElement("div");
   meal.classList.add("col-sm-4");
-
+//  meal.classList.add("col-sm-4");
   meal.innerHTML = `
 
   <div class="card" style="width: 100%">
@@ -35,29 +36,33 @@ function addMeal(mealData) {
             />
         </div>
         <div class="card-body">
-            <a href = "javascript:void(0)" onclick= "fetchById(${mealData["idMeal"]})" data-id =${mealData["idMeal"]} class="btn btn-primary">Go to source</a>
-
+            <a href = "javascript:void(0)" onclick= "fetchById(${mealData["idMeal"]})" data-id =${mealData["idMeal"]} class="btn btn-primary">View Recipe</a>
+            <h6 class="country">${mealData.strArea}</h6>
         </div>
         </div>
         </div>
     `;
+
+
   mealsElement.appendChild(meal);
+ 
+
 }
 
 //search function here
 async function getMealsBySearch(term) {
-  try{
-  const resp = await fetch(
-    "https://www.themealdb.com/api/json/v1/1/search.php?s=" + term
-  );
+  try {
+    const resp = await fetch(
+      "https://www.themealdb.com/api/json/v1/1/search.php?s=" + term
+    );
 
-  const respData = await resp.json();
-  const meals = respData.meals;
+    const respData = await resp.json();
+    const meals = respData.meals;
 
-  return meals;
-} catch (error) {
-  console.log(`${error}`);
-}
+    return meals;
+  } catch (error) {
+    console.log(`${error}`);
+  }
 }
 
 searchBtn.addEventListener("click", async () => {
@@ -73,3 +78,30 @@ searchBtn.addEventListener("click", async () => {
     });
   }
 });
+
+
+//=========showmeal info================
+const fetchById = (id) => {
+  url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
+  fetch(url)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("NETWORK RESPONSE ERROR");
+      }
+    })
+    .then((data) => {
+      obj = data;
+      setToLocal(obj);
+    })
+    .catch((error) => {
+      console.log(`${error}`);
+    });
+};
+
+function setToLocal(obj) {
+  const a = obj.meals;
+  localStorage.setItem("mealsDesc", JSON.stringify(a[0]));
+  window.location.href = "./recipe.html";
+}
