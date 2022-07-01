@@ -1,7 +1,7 @@
 const contentContainer = document.getElementsByClassName("content-container");
 const imageContainer = document.getElementsByClassName("image-container"); 
 const ingredientContainer = document.getElementById("ingredient-container"); 
-const ingredientList = document.createElement("ul");
+const ingredientList = document.createElement("ol");
 
 //getting stuff off local storage
 const mealdesc = localStorage.getItem("mealsDesc"); 
@@ -23,7 +23,7 @@ instructions.innerHTML = `
 contentContainer[0].append(instructions);
 
 //add image of recipe to DOM
-imageContainer[0].innerHTML = `<img src = "${mealDescription["strMealThumb"]}"  id ="food-thumbnail"/> 
+imageContainer[0].innerHTML = `<img src = "${mealDescription["strMealThumb"]}"  class="img-fluid"/> 
 `;
 
 // concate and adding ingredients + measure to DOM

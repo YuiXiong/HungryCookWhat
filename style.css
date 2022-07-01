@@ -5,3 +5,13 @@ main {
 header {
     margin-top: 2%;
 }
+iframe{
+    margin:0 auto;
+    display:block;
+  }
+
+  #ingredient-container {
+    text-align: left;
+    list-style-position: inside;
+
+  }
