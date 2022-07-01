@@ -22,10 +22,19 @@
 
 
   <!--Search bar here-->
-  <section class="header">
+  <div class="search-box">
     <input type="text" placeholder="Search recipes" id="search-term" />
     <button type="button" id="search" class="btn"><i class="fa fa-search"></i></button>
-  </section>
+  </div>
+
+  <!--filter-->
+   <div id="myBtnContainer"> 
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <button class="butn" onclick="filterSelection('Chinese')"> chinese</button>
+    <button class="butn" onclick="filterSelection('Japanese')"> indian</button>
+    <button class="butn" onclick="filterSelection('French')"> French</button>
+    <button class="butn" onclick="filterSelection('Mexican')"> Mexican</button>
+  </div> 
 
   <!--JS created cards here-->
   <div class="d-flex flex-wrap flex-row align-items-center justify-content-center" id="meals-id"></div>

@@ -14,7 +14,7 @@ instructions.innerHTML = `
 <h1>${mealDescription["strMeal"]}</h1>
 <div id = "instructions">${mealDescription["strInstructions"]}</div>
 <div class="row">
-			<h5>Video Recipe</h5>
+			<h1>Video Recipe</h5>
 			<div class="videoWrapper">
 				<iframe width="420" height="315"
 				src="https://www.youtube.com/embed/${mealDescription.strYoutube.slice(-11)}">
